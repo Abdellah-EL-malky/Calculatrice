@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int choix;
+    double nombre1, nombre2, resultat, somme;
+    int i;
+    double nombres[100];  
+    
+    do {
+        printf("\nMenu Principal :\n"); 
+        printf(" 1.Addition\n"); 
+        printf(" 2.Soustraction\n");
+        printf(" 3.Multiplication\n");
+        printf(" 4.Division\n");
+        printf(" 5.Moyenne\n");
+        printf(" 6.Valeur absolue\n");
+        printf(" 7.Exponentiation\n");
+        printf(" 8.Racine carree\n");
+        printf(" 0.Quitter\n\n");
+        printf("Saisissez votre choix:");
+        scanf("%d", &choix);
+
+        switch (choix) {
+            case 1:  
+                somme = 0;
+                do {
+                    printf("Entrez un nombre (0 pour terminer) : ");
+                    scanf("%lf", &nombre1);
+                    if (nombre1 != 0) {
+                        somme += nombre1;
+                    }
+                } while (nombre1 != 0);
+                printf("Resultat de l'addition : %.2f\n", somme);
+                break;
+
+            case 2:  
+                printf("Entrez le premier nombre : ");
+                scanf("%lf", &nombre1);
+                printf("Entrez le deuxieme nombre : ");
+                scanf("%lf", &nombre2);
+                resultat = nombre1 - nombre2;
+                printf("Resultat de la soustraction : %.2f\n", resultat);
+                break;
+
+            case 3:  
+                resultat = 1;
+                do {
+                    printf("Entrez un nombre (0 pour terminer) : ");
+                    scanf("%lf", &nombre1);
+                    if (nombre1 != 0) {
+                        resultat *= nombre1;
+                    }
+                } while (nombre1 != 0);
+                printf("Resultat de la multiplication : %.2f\n", resultat);
+                break;
+
+            case 4:  
+                printf("Entrez le dividende : ");
+                scanf("%lf", &nombre1);
+                printf("Entrez le diviseur : ");
+                scanf("%lf", &nombre2);
+                if (nombre2 == 0) {
+                    printf("Erreur : Division par zero !\n");
+                } else {
+                    resultat = nombre1 / nombre2;
+                    printf("Resultat de la division : %.2f\n", resultat);
+                }
+                break;
+
+            case 5:  
+                printf("Combien de nombres pour calculer la moyenne ? ");
+                scanf("%d", &i);
+                somme = 0;
+                for (int j = 0; j < i; j++) {
+                    printf("Entrez le nombre %d : ", j + 1);
+                    scanf("%lf", &nombres[j]);
+                    somme += nombres[j];
+                }
+                resultat = somme / i;
+                printf("Moyenne : %.2f\n", resultat);
+                break;
+
+            case 6:  
+                printf("Entrez un nombre : ");
+                scanf("%lf", &nombre1);
+                resultat = fabs(nombre1);
+                printf("Valeur absolue : %.2f\n", resultat);
+                break;
+
+            case 7:  
+                printf("Entrez la base : ");
+                scanf("%lf", &nombre1);
+                printf("Entrez l'exposant : ");
+                scanf("%lf", &nombre2);
+                resultat = pow(nombre1, nombre2);
+                printf("Resultat de l'exponentiation : %.2f\n", resultat);
+                break;
+
+            case 8:  
+                printf("Entrez un nombre positif : ");
+                scanf("%lf", &nombre1);
+                if (nombre1 < 0) {
+                    printf("Erreur : Impossible de calculer la racine carree d'un nombre negatif !\n");
+                } else {
+                    resultat = sqrt(nombre1);
+                    printf("Resultat de la racine carree : %.2f\n", resultat);
+                }
+                break;
+
+            case 0:  
+                printf("Au revoir !\n");
+                break;
+
+            default:
+                if (choix == 9) {
+                    continue; 
+                } else {
+                    printf("Option invalide. Veuillez choisir une option valide.\n");
+                }
+                break;
+        }
+
+    } while (choix != 0);
+
+    return 0;
+}
